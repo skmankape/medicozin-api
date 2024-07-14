@@ -18,6 +18,24 @@ public class MyUserDetails implements UserDetails {
         this.active = userDetails.isEnabled();
     }
 
+    public MyUserDetails(StudentEntity student) {
+        this.email = student.getEmail();
+        this.password = student.getPassword();
+        this.active = student.isActive();
+    }
+
+    public MyUserDetails(DoctorEntity doctor) {
+        this.email = doctor.getEmail();
+        this.password = doctor.getPassword();
+        this.active = doctor.isActive();
+    }
+
+    public MyUserDetails(CompanyEntity company) {
+        this.email = company.getEmail();
+        this.password = company.getPassword();
+        this.active = company.isActive();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

@@ -79,7 +79,9 @@ public class DoctorEntity implements UserDetails {
     public Long getDoctorId() {
         return doctorid;
     }
-
+    public boolean isActive() {
+        return true;
+    }
     public void setDoctorId(Long doctorId) {
         this.doctorid = doctorId;
     }

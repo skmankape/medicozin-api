@@ -30,7 +30,7 @@ public class StudentController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
+    @PostMapping("/studentRegister")
     public ResponseEntity<?> registerStudent(@RequestBody StudentEntity student) {
         student.setPassword(passwordEncoder.encode(student.getPassword()));
         studentService.saveStudent(student);

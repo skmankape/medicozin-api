@@ -1,6 +1,7 @@
 package com.medicozin.medicozin_api.filters;
 
-import com.medicozin.medicozin_api.service.CustomUserDetailsService;
+
+import com.medicozin.medicozin_api.service.MyUserDetailsService;
 import com.medicozin.medicozin_api.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -20,7 +21,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private MyUserDetailsService userDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

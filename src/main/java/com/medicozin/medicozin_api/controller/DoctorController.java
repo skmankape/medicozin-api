@@ -23,7 +23,7 @@ public class DoctorController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @PostMapping("/dcreate")
+    @PostMapping("/doctorRegister")
     public ResponseEntity<?> createDoctor(@RequestBody DoctorEntity doctor) {
         doctor.setPassword(passwordEncoder.encode(doctor.getPassword()));
         doctorService.saveDoctor(doctor);

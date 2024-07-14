@@ -1,6 +1,7 @@
 package com.medicozin.medicozin_api.security;
 
 import com.medicozin.medicozin_api.filters.JwtRequestFilter;
+import com.medicozin.medicozin_api.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +26,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig {
 
     @Autowired
-    @Qualifier("studentService")
-    private UserDetailsService userDetailsService;
+    private MyUserDetailsService userDetailsService;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
@@ -54,7 +54,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/hello","/authenticate","/register","/ccreate","/dcreate")
+                        req.requestMatchers("/hello","/authenticate","/studentRegister","/companyRegister","/doctorRegister")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

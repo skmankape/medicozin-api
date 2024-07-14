@@ -52,7 +52,9 @@ public class CompanyEntity implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
-
+    public boolean isActive() {
+        return true;
+    }
 
     public boolean isAccountNonLocked() {
         return true;

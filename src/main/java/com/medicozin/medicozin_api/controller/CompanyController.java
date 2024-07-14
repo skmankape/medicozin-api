@@ -21,7 +21,7 @@ public class CompanyController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/ccreate")
+    @PostMapping("/companyRegister")
     public ResponseEntity<?> createCompany(@RequestBody CompanyEntity company) {
         company.setPassword(passwordEncoder.encode(company.getPassword()));
         companyService.saveCompany(company);
