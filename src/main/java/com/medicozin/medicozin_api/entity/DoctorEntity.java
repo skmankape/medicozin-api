@@ -75,6 +75,9 @@ public class DoctorEntity implements UserDetails {
         return true;
     }
 
+    public Long getId() {
+        return doctorid;
+    }
 
     public Long getDoctorId() {
         return doctorid;

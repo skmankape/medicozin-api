@@ -58,6 +58,6 @@ public class AuthenticationController {
             throw new Exception("Unknown user type");
         }
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, userDetails.getUsername(), userType));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userDetails.getUserId(), userType));
     }
 }

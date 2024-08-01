@@ -1,4 +1,9 @@
-package com.medicozin.medicozin_api.entity;
+package com.medicozin.medicozin_api.repository;
 
-public interface FollowersRepository {
+import com.medicozin.medicozin_api.entity.FollowersEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface FollowersRepository extends JpaRepository<FollowersEntity,Long> {
 }

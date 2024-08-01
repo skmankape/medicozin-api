@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 
 @Service
@@ -43,5 +44,12 @@ public class StudentService implements org.springframework.security.core.userdet
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
+    }
+    public Optional<StudentEntity> getStudentById(Long studentId) {
+        return studentRepository.findById(studentId);
+    }
+
+    public StudentEntity findById(Long studentId) {
+        return studentRepository.findById(studentId).orElse(null);
     }
 }

@@ -65,6 +65,9 @@ public class CompanyEntity implements UserDetails {
         return true;
     }
 
+    public Long getId() {
+        return companyid;
+    }
 
     public boolean isEnabled() {
         return true;

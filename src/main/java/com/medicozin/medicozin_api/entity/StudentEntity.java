@@ -75,6 +75,9 @@ public class StudentEntity implements UserDetails {
         return true;
     }
 
+    public Long getId() {
+        return studentId;
+    }
     @Override
     public boolean isEnabled() {
         return true;

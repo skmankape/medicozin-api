@@ -8,32 +8,41 @@ import java.util.List;
 
 public class MyUserDetails implements UserDetails {
 
+    private Long userId;
     private String email;
     private String password;
     private boolean active;
 
-    public MyUserDetails(UserDetails userDetails) {
+    public MyUserDetails(UserDetails userDetails, Long userId) {
         this.email = userDetails.getUsername();
         this.password = userDetails.getPassword();
         this.active = userDetails.isEnabled();
+        this.userId = userId;
     }
 
     public MyUserDetails(StudentEntity student) {
         this.email = student.getEmail();
         this.password = student.getPassword();
         this.active = student.isActive();
+        this.userId = student.getId();
     }
 
     public MyUserDetails(DoctorEntity doctor) {
         this.email = doctor.getEmail();
         this.password = doctor.getPassword();
         this.active = doctor.isActive();
+        this.userId = doctor.getId();
     }
 
     public MyUserDetails(CompanyEntity company) {
         this.email = company.getEmail();
         this.password = company.getPassword();
         this.active = company.isActive();
+        this.userId = company.getId();
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 
     @Override

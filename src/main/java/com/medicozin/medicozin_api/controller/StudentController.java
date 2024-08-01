@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -36,6 +38,14 @@ public class StudentController {
         studentService.saveStudent(student);
         return ResponseEntity.ok("Student registered successfully");
     }
-
+    @GetMapping("/studentDetails/{id}")
+    public ResponseEntity<?> getStudentById(@PathVariable Long id) {
+        Optional<StudentEntity> student = studentService.getStudentById(id);
+        if (student.isPresent()) {
+            return ResponseEntity.ok(student.get());
+        } else {
+            return ResponseEntity.status(404).body("Student not found");
+        }
+    }
 
 }

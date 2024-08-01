@@ -54,7 +54,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/hello","/authenticate","/studentRegister","/companyRegister","/doctorRegister")
+                        req.requestMatchers("/getComments/{id}","/deletelike","/getAll","/uploads/**","/Likestatus","/studentDetails/{id}","/hello","/chat/messages","/ws-chat","/topic/messages", "/ws-chat/**","/error","/authenticate","/studentRegister","/companyRegister","/doctorRegister")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
@@ -62,6 +62,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 }
