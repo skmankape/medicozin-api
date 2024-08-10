@@ -16,19 +16,10 @@ public class FollowingEntity {
     @Column(name = "followingid")
     private Long followingid;
 
-    @Column(name = "firstname")
-    private String firstname;
+    private Long studentId;
 
-    @Column(name = "lastname")
-    private String lastname;
-
-    @Column(name = "specialization")
-    private String specialization;
-
-    @Column(name = "collagename")
-    private String collagename;
-
-    @Column(name = "followinguserid")
-    private String followinguserid;
+    @ManyToOne
+    @JoinColumn(name = "foloowinguserid", referencedColumnName = "studentId")
+    private StudentEntity following;
 
 }

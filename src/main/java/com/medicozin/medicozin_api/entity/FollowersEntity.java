@@ -22,20 +22,10 @@ public class FollowersEntity {
     @Column(name = "folloersId")
     private Long folloersId;
 
-    @Column(name = "firstname")
-    private String firstname;
+    private Long studentId;
+    @ManyToOne
+    @JoinColumn(name = "followeruserid", referencedColumnName = "studentId")
+    private StudentEntity follower;
 
-    @Column(name = "lastname")
-    private String lastname;
-
-    @Column(name = "collagename")
-    private String collagename;
-
-
-    @Column(name = "specialization")
-    private String specialization;
-
-    @Column(name = "followeruserid")
-    private String followeruserid;
 
 }

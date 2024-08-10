@@ -16,23 +16,13 @@ public class ConnectionsEntity {
     @Column(name = "connectionsId")
     private Long connectionsId;
 
-    @Column(name = "firstname")
-    private String firstname;
+    private String status;
 
-    @Column(name = "lastname")
-    private String lastname;
+    private Long studentId;
 
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "specialization")
-    private String specialization;
-
-    @Column(name = "collagename")
-    private String collagename;
+    @ManyToOne
+    @JoinColumn(name = "connectionId", referencedColumnName = "studentId")
+    private StudentEntity connection;
 
 
-    @Column(name = "connectionuserid")
-    private String connectionuserid;
 }

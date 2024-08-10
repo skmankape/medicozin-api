@@ -54,7 +54,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/getComments/{id}","/deletelike","/getAll","/uploads/**","/Likestatus","/studentDetails/{id}","/hello","/chat/messages","/ws-chat","/topic/messages", "/ws-chat/**","/error","/authenticate","/studentRegister","/companyRegister","/doctorRegister")
+                        req.requestMatchers( "/getProfilepicbyId/{userId}","/getAllbyId/**","/ceateFollowers","/getConnections/{studentId}","/getFollowingg/{followerStudentId}","/getFollowers/{studentId}","/studentDetails/{userId}","/getComments/{id}","/deletelike","/getAll","/uploads/**","/Likestatus","/studentDetails/{id}","/hello","/chat/messages","/ws-chat","/topic/messages", "/ws-chat/**","/error","/authenticate","/studentRegister","/companyRegister","/doctorRegister")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

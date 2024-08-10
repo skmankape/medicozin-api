@@ -28,4 +28,8 @@ public class PostsController {
     public List<Posts> getAllPosts() {
         return postService.getAllPosts();
     }
+    @GetMapping("/getAllbyId/{userId}")
+    public List<Object[]> getAllPostsbyId(@PathVariable Long userId) {
+        return postService.getAllPostsbyId(userId);
+    }
 }

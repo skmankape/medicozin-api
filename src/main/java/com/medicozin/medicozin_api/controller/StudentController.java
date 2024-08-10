@@ -48,4 +48,12 @@ public class StudentController {
         }
     }
 
+    @GetMapping("/studentAddress/{userId}")
+    public ResponseEntity<Object[]> getStudentDetailsByUserId(@PathVariable Long userId) {
+        Optional<Object[]> studentDetails = studentService.getStudentDetailsByUserId(userId);
+        return studentDetails.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

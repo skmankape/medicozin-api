@@ -48,6 +48,9 @@ public class StudentService implements org.springframework.security.core.userdet
     public Optional<StudentEntity> getStudentById(Long studentId) {
         return studentRepository.findById(studentId);
     }
+    public Optional<Object[]> getStudentDetailsByUserId(Long userId) {
+        return studentRepository.findStudentDetailsByUserId(userId);
+    }
 
     public StudentEntity findById(Long studentId) {
         return studentRepository.findById(studentId).orElse(null);

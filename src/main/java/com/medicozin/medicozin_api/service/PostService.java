@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +37,7 @@ public class PostService {
                 Files.createDirectories(path.getParent());
                 Files.write(path, image.getBytes());
                 // Store the image URL
-                post.setImageUrl("http://192.168.1.5:9091/uploads/" + fileName);
+                post.setImageUrl("http://192.168.1.9:9091/uploads/" + fileName);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -51,5 +50,8 @@ public class PostService {
 
     public List<Posts> getAllPosts() {
         return postRepository.findAll();
+    }
+    public List<Object[]> getAllPostsbyId(Long userid) {
+        return postRepository.findAllByuserId(userid);
     }
 }

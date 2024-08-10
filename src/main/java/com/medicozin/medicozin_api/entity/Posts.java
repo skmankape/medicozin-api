@@ -20,7 +20,7 @@ public class Posts {
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private StudentEntity studentEntity;
-
+    @Column(columnDefinition = "TEXT")
     private String content;
     private String type;
 
