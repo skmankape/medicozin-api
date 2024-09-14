@@ -16,6 +16,7 @@ public class FollowersController {
 
     @PostMapping("/ceateFollowers")
     public FollowersEntity createFollower(@RequestBody FollowersEntity follower) {
+//         System.out.println(("jffj "+follower));
         return followersService.saveFollower(follower);
     }
 
@@ -32,4 +33,6 @@ public List<FollowersEntity> getFollowersByStudentId(@PathVariable Long studentI
     public Optional<Object[]> getFollowersByFollowerStudentId(@PathVariable Long followerStudentId) {
         return followersService.getFollowersByFollowerStudentId(followerStudentId);
     }
+
+
 }

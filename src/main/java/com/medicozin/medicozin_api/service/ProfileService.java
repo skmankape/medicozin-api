@@ -31,7 +31,7 @@ public class ProfileService {
                 Files.createDirectories(path.getParent());
                 Files.write(path, image.getBytes());
                 // Store the image URL
-                post.setImageUrl("http://192.168.1.9:9091/uploads/" + fileName);
+                post.setImageUrl("/uploads/" + fileName);
 
             } catch (IOException e) {
                 e.printStackTrace();

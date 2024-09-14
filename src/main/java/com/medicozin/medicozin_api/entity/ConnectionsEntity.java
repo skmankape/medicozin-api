@@ -9,20 +9,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="Connections")
+@Table(name = "Connections")
 public class ConnectionsEntity {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "connectionsId")
     private Long connectionsId;
 
-    private String status;
+    @Column(name = "status", nullable = false)
+    private boolean status = false; // Initial status set to false
 
+    @Column(name = "studentId", nullable = false)
     private Long studentId;
 
     @ManyToOne
     @JoinColumn(name = "connectionId", referencedColumnName = "studentId")
     private StudentEntity connection;
-
 
 }

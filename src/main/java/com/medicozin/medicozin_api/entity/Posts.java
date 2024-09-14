@@ -24,8 +24,12 @@ public class Posts {
     private String content;
     private String type;
 
+
+
     // Add image URL field
     private String imageUrl;
+
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable = false)
