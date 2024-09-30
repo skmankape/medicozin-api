@@ -5,7 +5,6 @@ import com.medicozin.medicozin_api.service.FollowersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,7 +25,7 @@ public class FollowersController {
 //    return followersService.getFollowersByFollowerStudentId(studentId);
 //}
 @GetMapping("/getFollowers/{studentId}")
-public List<FollowersEntity> getFollowersByStudentId(@PathVariable Long studentId) {
+public Optional<Object[]> getFollowersByStudentId(@PathVariable Long studentId) {
     return followersService.getFollowersByStudentId(studentId);
 }
     @GetMapping("/getFollowingg/{followerStudentId}")

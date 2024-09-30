@@ -5,7 +5,7 @@ import com.medicozin.medicozin_api.service.ConnectionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ConnectionsController {
@@ -19,7 +19,7 @@ public class ConnectionsController {
     }
 
     @GetMapping("/getConnections/{studentId}")
-    public List<ConnectionsEntity> getConnectionsByStudentId(@PathVariable Long studentId) {
+    public Optional<Object[]> getConnectionsByStudentId(@PathVariable Long studentId) {
         return connectionsService.getConnectionsByStudentId(studentId);
     }
 }

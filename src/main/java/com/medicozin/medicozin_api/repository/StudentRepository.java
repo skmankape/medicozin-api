@@ -26,4 +26,18 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
             nativeQuery = true)
     Optional<Object[]> findByFollowerStudentId(@Param("followerUserId") Long followerUserId);
 
+
+    @Query(value = "SELECT s.student_id,s.collagename, s.email, s.firstname, s.lastname, s.mobileno, s.specialization,p.image_url FROM Student s " +
+            "INNER JOIN Followers f ON s.student_id = f.followeruserid " +
+            "INNER JOIN Profile p ON s.student_id=p.student_id " +
+            "WHERE f.student_id = :followerUserId",
+            nativeQuery = true)
+    Optional<Object[]> findByFollowerStudentId2(@Param("followerUserId") Long followerUserId);
+
+    @Query(value = "SELECT s.student_id,s.collagename, s.email, s.firstname, s.lastname, s.mobileno, s.specialization,p.image_url FROM Student s " +
+            "INNER JOIN Connections c ON s.student_id = c.connection_id " +
+            "INNER JOIN Profile p ON s.student_id=p.student_id " +
+            "WHERE c.student_id = :followerUserId and c.status=0",
+            nativeQuery = true)
+    Optional<Object[]> findByFollowerStudentId3(@Param("followerUserId") Long followerUserId);
 }

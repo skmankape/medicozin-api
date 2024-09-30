@@ -6,7 +6,6 @@ import com.medicozin.medicozin_api.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,8 +20,8 @@ public class FollowersService {
         return followersRepository.save(follower);
     }
 
-    public List<FollowersEntity> getFollowersByStudentId(Long studentId) {
-        return followersRepository.findByStudentId(studentId);
+    public Optional<Object[]> getFollowersByStudentId(Long followerStudentId) {
+        return studentRepository.findByFollowerStudentId2(followerStudentId);
     }
 
     public Optional<Object[]> getFollowersByFollowerStudentId(Long followerStudentId) {

@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 public class ConnectionsEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "connectionsId")
     private Long connectionsId;
 
-    @Column(name = "status", nullable = false)
-    private boolean status = false; // Initial status set to false
+    @Column(name = "status")
+    private boolean status = false;
 
-    @Column(name = "studentId", nullable = false)
+    @Column(name = "studentId")
     private Long studentId;
 
     @ManyToOne

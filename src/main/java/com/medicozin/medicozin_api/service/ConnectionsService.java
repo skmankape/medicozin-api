@@ -2,10 +2,11 @@ package com.medicozin.medicozin_api.service;
 
 import com.medicozin.medicozin_api.entity.ConnectionsEntity;
 import com.medicozin.medicozin_api.repository.ConnectionsRepository;
+import com.medicozin.medicozin_api.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConnectionsService {
@@ -13,11 +14,14 @@ public class ConnectionsService {
     @Autowired
     private ConnectionsRepository connectionsRepository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
     public ConnectionsEntity saveConnection(ConnectionsEntity connection) {
         return connectionsRepository.save(connection);
     }
 
-    public List<ConnectionsEntity> getConnectionsByStudentId(Long studentId) {
-        return connectionsRepository.findByStudentId(studentId);
+    public Optional<Object[]> getConnectionsByStudentId(Long studentId) {
+        return studentRepository.findByFollowerStudentId3(studentId);
     }
 }
