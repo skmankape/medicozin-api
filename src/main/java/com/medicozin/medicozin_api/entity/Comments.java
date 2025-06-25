@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -14,7 +15,7 @@ import java.util.Date;
 public class Comments {
     @Id
     @GeneratedValue
-    private Long commentId;
+    private UUID commentId;
     @ManyToOne
     @JoinColumn(name="studentId",nullable = false)
     private StudentEntity studentEntity;

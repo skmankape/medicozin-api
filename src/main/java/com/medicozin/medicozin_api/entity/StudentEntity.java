@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -19,7 +20,7 @@ public class StudentEntity implements UserDetails {
     @Id
     @GeneratedValue
     @Column(name = "studentId")
-    private Long studentId;
+    private UUID studentId;
 
     @Column(name = "firstname")
     private String firstname;
@@ -35,7 +36,19 @@ public class StudentEntity implements UserDetails {
 
     @Column(name = "specialization")
     private String specialization;
+    //SHREE//
+    @Column(name = "gender")
+    private String gender;
 
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "year")
+    private String year;
+
+    @Column(name = "dob")
+    private String dob;
+    //SHREE//
     @Column(name = "mobileno")
     private String mobileno;
 
@@ -75,7 +88,7 @@ public class StudentEntity implements UserDetails {
         return true;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return studentId;
     }
     @Override

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class CommentsController {
@@ -21,7 +22,7 @@ public class CommentsController {
     }
 
     @GetMapping("/getComments/{id}")
-    public List<CommentDTO> getAllComments(@PathVariable Long id) {
+    public List<CommentDTO> getAllComments(@PathVariable UUID id) {
         return commentService.getAllCommentsForPost(id);
     }
 }

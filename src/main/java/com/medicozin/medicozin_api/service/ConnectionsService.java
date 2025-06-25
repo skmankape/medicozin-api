@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ConnectionsService {
@@ -21,7 +22,7 @@ public class ConnectionsService {
         return connectionsRepository.save(connection);
     }
 
-    public Optional<Object[]> getConnectionsByStudentId(Long studentId) {
+    public Optional<Object[]> getConnectionsByStudentId(UUID studentId) {
         return studentRepository.findByFollowerStudentId3(studentId);
     }
 }

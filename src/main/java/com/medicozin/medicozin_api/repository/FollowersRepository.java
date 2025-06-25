@@ -7,10 +7,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface FollowersRepository extends JpaRepository<FollowersEntity,Long> {
-    List<FollowersEntity> findByStudentId(Long studentId);
+public interface FollowersRepository extends JpaRepository<FollowersEntity,UUID> {
+    List<FollowersEntity> findByStudentId(UUID studentId);
 //    List<FollowersEntity> findByFollowerStudentId(Long followerStudentId);
 
 //    @Query("SELECT CASE WHEN COUNT(f) > 0 THEN true ELSE false END FROM FollowersEntity f WHERE f.follower.id = :followeruserid AND f.studentId = :studentId")

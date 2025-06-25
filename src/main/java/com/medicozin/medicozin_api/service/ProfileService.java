@@ -11,17 +11,29 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProfileService {
 
     @Autowired
     private ProfileRepository profileRepository;
-    private static final String UPLOADED_FOLDER = "C:/Users/venka/medicozin-api/uploads/";
+    private static final String UPLOADED_FOLDER = "D:/medicozin/medicozin-api/uploads/";
 
-    public Profile createPost(Long studentId, MultipartFile image) {
-        Profile post =new Profile();
-        post.setStudentId(studentId);
+    public Profile createPost(UUID studentId, MultipartFile image) {
+        Profile post;
+        // Check if a Profile already exists for this studentId
+        Optional<Profile> existingProfile = profileRepository.findByStudentId(studentId);
+
+        if (existingProfile.isPresent()) {
+            // Use the existing profile
+            post = existingProfile.get();
+        } else {
+            // Create a new profile
+            post = new Profile();
+            post.setStudentId(studentId);
+        }
 
 
         if (image != null && !image.isEmpty()) {
@@ -40,7 +52,7 @@ public class ProfileService {
 
         return profileRepository.save(post);
     }
-    public List<Object[]> getAllPostsbyId(Long userid) {
+    public List<Object[]> getAllPostsbyId(UUID userid) {
         return profileRepository.findAllByuserId(userid);
     }
 }

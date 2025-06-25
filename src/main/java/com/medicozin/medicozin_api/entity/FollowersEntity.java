@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -20,9 +21,9 @@ public class FollowersEntity {
     @Id
     @GeneratedValue
     @Column(name = "folloersId")
-    private Long folloersId;
+    private UUID folloersId;
 
-    private Long studentId;
+    private UUID studentId;
     @ManyToOne
     @JoinColumn(name = "followeruserid", referencedColumnName = "studentId")
     private StudentEntity follower;

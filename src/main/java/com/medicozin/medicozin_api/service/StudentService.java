@@ -1,5 +1,6 @@
 package com.medicozin.medicozin_api.service;
 
+import com.medicozin.medicozin_api.entity.DoctorEntity;
 import com.medicozin.medicozin_api.entity.StudentEntity;
 import com.medicozin.medicozin_api.exception.UsernameAlreadyExistsException;
 import com.medicozin.medicozin_api.repository.CompanyRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -45,14 +47,29 @@ public class StudentService implements org.springframework.security.core.userdet
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
-    public Optional<StudentEntity> getStudentById(Long studentId) {
+    public Optional<StudentEntity> getStudentById(UUID studentId) {
         return studentRepository.findById(studentId);
     }
-    public Optional<Object[]> getStudentDetailsByUserId(Long userId) {
+
+    public Optional<Object[]> getStudentDetailsByUserId(UUID userId) {
         return studentRepository.findStudentDetailsByUserId(userId);
     }
 
-    public StudentEntity findById(Long studentId) {
+    public StudentEntity findById(UUID studentId) {
         return studentRepository.findById(studentId).orElse(null);
+    }
+
+    public void updateStudentDetails(UUID userId, StudentEntity updatedStudent) {
+        StudentEntity existingStudent = studentRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        // Update allowed fields only
+        existingStudent.setGender(updatedStudent.getGender());
+        existingStudent.setDob(updatedStudent.getDob());
+        existingStudent.setLocation(updatedStudent.getLocation());
+        existingStudent.setYear(updatedStudent.getYear());
+        existingStudent.setMobileno(updatedStudent.getMobileno());
+
+        studentRepository.save(existingStudent);
     }
 }

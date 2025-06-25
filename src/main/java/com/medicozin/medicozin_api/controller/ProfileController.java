@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ProfileController {
@@ -14,12 +15,12 @@ public class ProfileController {
     private ProfileService profileService;
     @PutMapping("/createprofilePic")
     public Profile createPost(
-            @RequestParam Long studentId,
+            @RequestParam UUID studentId,
             @RequestParam(required = false) MultipartFile image) {
         return profileService.createPost(studentId, image);
     }
     @GetMapping("/getProfilepicbyId/{userId}")
-    public List<Object[]> getAllPostsbyId(@PathVariable Long userId) {
+    public List<Object[]> getAllPostsbyId(@PathVariable UUID userId) {
         return profileService.getAllPostsbyId(userId);
     }
 }

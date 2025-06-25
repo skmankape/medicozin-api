@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface ConnectionsRepository extends JpaRepository<ConnectionsEntity, Long> {
-    List<ConnectionsEntity> findByStudentId(Long studentId);
+public interface ConnectionsRepository extends JpaRepository<ConnectionsEntity, UUID> {
+    List<ConnectionsEntity> findByStudentId(UUID studentId);
 }

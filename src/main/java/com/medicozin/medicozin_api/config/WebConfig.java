@@ -14,7 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:C:/Users/venka/medicozin-api/uploads/");
+                .addResourceLocations("file:D:/medicozin/medicozin-api/uploads/");
     }
     @Bean
     public MultipartConfigElement multipartConfigElement() {

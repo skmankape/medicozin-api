@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -20,17 +21,17 @@ public class ChatMessage {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
-    private Long sender;   // ID or username of the sender
-    private Long receiver; // ID or username of the receiver
+    private UUID sender;   // ID or username of the sender
+    private UUID receiver; // ID or username of the receiver
     private String content;
     private LocalDateTime timestamp;
 
     // Constructors
     public ChatMessage() {}
 
-    public ChatMessage(Long sender, Long receiver, String content, LocalDateTime timestamp) {
+    public ChatMessage(UUID sender, UUID receiver, String content, LocalDateTime timestamp) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
@@ -38,27 +39,27 @@ public class ChatMessage {
     }
 
     // Getters and Setters
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getSender() {
+    public UUID getSender() {
         return sender;
     }
 
-    public void setSender(Long sender) {
+    public void setSender(UUID sender) {
         this.sender = sender;
     }
 
-    public Long getReceiver() {
+    public UUID getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Long receiver) {
+    public void setReceiver(UUID receiver) {
         this.receiver = receiver;
     }
 
