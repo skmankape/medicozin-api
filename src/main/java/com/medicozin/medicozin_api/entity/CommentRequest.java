@@ -2,13 +2,15 @@ package com.medicozin.medicozin_api.entity;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class CommentRequest {
-    private Long postId;
-    private Long studentId;
+    private UUID postId;
+    private UUID studentId;
     private String content;
 
-    public Long getStudentId() {
+    public UUID getStudentId() {
         return null;
     }
 }

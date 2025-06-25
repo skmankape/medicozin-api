@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,10 +18,10 @@ public class Profile {
 
     @Id
     @GeneratedValue
-    private Long profileId;
+    private UUID profileId;
 
 
-    private Long StudentId;
+    private UUID StudentId;
 
     private String imageUrl;
 }

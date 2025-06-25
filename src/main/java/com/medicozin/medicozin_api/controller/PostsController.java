@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 
@@ -20,22 +21,23 @@ public class PostsController {
 
     @PostMapping("/create")
     public Posts createPost(
-            @RequestParam Long studentId,
+            @RequestParam UUID studentId,
             @RequestParam String content,
             @RequestParam String type,
-            @RequestParam(required = false) MultipartFile image) {
+            @RequestParam(required = false) MultipartFile image) {System.out.println("Student ID: " + studentId);
+
         return postService.createPost(studentId, content, type, image);
     }
 
     @GetMapping("/getAll/{studentId}")
-    public List<Map<String, Object>> getAllPosts(@PathVariable Long studentId) {
+    public List<Map<String, Object>> getAllPosts(@PathVariable UUID studentId) {
         return postService.getAllPosts(studentId);
     }
 //    public List<Posts> getAllPosts() {
 //        return postService.getAllPosts();
 //    }
     @GetMapping("/getAllbyId/{userId}")
-    public List<Object[]> getAllPostsbyId(@PathVariable Long userId) {
+    public List<Object[]> getAllPostsbyId(@PathVariable UUID userId) {
         return postService.getAllPostsbyId(userId);
     }
 }

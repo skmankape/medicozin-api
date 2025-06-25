@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -15,7 +16,7 @@ public class Posts {
 
     @Id
     @GeneratedValue
-    private Long postId;
+    private UUID postId;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)

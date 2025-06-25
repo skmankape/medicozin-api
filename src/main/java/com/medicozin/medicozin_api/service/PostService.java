@@ -25,9 +25,9 @@ public class PostService {
     @Autowired
     private StudentRepository studentRepository;
 
-    private static final String UPLOADED_FOLDER = "C:/Users/venka/medicozin-api/uploads/";
+    private static final String UPLOADED_FOLDER = "D:/medicozin/medicozin-api/uploads/";
 
-    public Posts createPost(Long studentId, String content, String type, MultipartFile image) {
+    public Posts createPost(UUID studentId, String content, String type, MultipartFile image) {
         Posts post = new Posts();
         post.setStudentEntity(studentRepository.findById(studentId).orElse(null));
         post.setContent(content);
@@ -53,7 +53,7 @@ public class PostService {
 
 
 
-    public List<Map<String, Object>> getAllPosts(Long studentId) {
+    public List<Map<String, Object>> getAllPosts(UUID studentId) {
         List<Object[]> results = postRepository.findAllData(studentId);
         List<Map<String, Object>> posts = new ArrayList<>();
 
@@ -80,7 +80,7 @@ public class PostService {
 //    public List<Posts> getAllPosts(){
 //        return postRepository.findAll();
 //    }
-    public List<Object[]> getAllPostsbyId(Long userid) {
+    public List<Object[]> getAllPostsbyId(UUID userid) {
         return postRepository.findAllByuserId(userid);
     }
 

@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class ChatHandler extends TextWebSocketHandler {
 
@@ -36,8 +37,8 @@ public class ChatHandler extends TextWebSocketHandler {
         String payload = message.getPayload();
         JsonNode jsonNode = objectMapper.readTree(payload);
 
-        Long sender = jsonNode.get("sender").asLong();
-        Long receiver = jsonNode.get("receiver").asLong();
+        UUID sender = UUID.fromString(jsonNode.get("sender").asText());
+        UUID receiver =  UUID.fromString(jsonNode.get("receiver").asText());
         String content = jsonNode.get("content").asText();
 
         // Save the message to the database

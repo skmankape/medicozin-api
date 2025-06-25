@@ -11,12 +11,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Repository
-public interface PostRepository extends JpaRepository<Posts,Long> {
+public interface PostRepository extends JpaRepository<Posts, UUID> {
 
     @Query("SELECT p.postId,p.type,p.imageUrl, p.createdAt,p.content FROM Posts p WHERE p.studentEntity.id = :userId")
-    List<Object[]> findAllByuserId(@Param("userId") Long userId);
+    List<Object[]> findAllByuserId(@Param("userId") UUID userId);
 //    @Query("SELECT po.postId,po.content, po.createdAt, po.imageUrl, po.type, po.studentEntity.id, pr.imageUrl,st.firstname,st.lastname,st.specialization,st.collagename " +
 //            "FROM Posts po " +
 //            "INNER JOIN Profile pr ON po.studentEntity.id = pr.StudentId " +
@@ -29,6 +30,6 @@ public interface PostRepository extends JpaRepository<Posts,Long> {
             "FROM Posts po " +
             "INNER JOIN Profile pr ON po.studentEntity.id = pr.StudentId " +
             "INNER JOIN StudentEntity st ON po.studentEntity.id = st.studentId")
-    List<Object[]> findAllData(@Param("studentId") Long studentId);
+    List<Object[]> findAllData(@Param("studentId") UUID studentId);
 
 }

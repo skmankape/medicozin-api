@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -15,13 +17,13 @@ public class ConnectionsEntity {
     @Id
     @GeneratedValue
     @Column(name = "connectionsId")
-    private Long connectionsId;
+    private UUID connectionsId;
 
     @Column(name = "status")
     private boolean status = false;
 
     @Column(name = "studentId")
-    private Long studentId;
+    private UUID studentId;
 
     @ManyToOne
     @JoinColumn(name = "connectionId", referencedColumnName = "studentId")

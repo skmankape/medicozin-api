@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CommentService {
@@ -24,7 +25,7 @@ public class CommentService {
     @Autowired
     private PostRepository postRepository;
 
-    public Comments createComment(Long postId, Long studentId, String content) {
+    public Comments createComment(UUID postId, UUID studentId, String content) {
         // Retrieve the post and student entities from the database
         Posts post = postRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found"));
@@ -41,7 +42,7 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<CommentDTO> getAllCommentsForPost(Long postId) {
+    public List<CommentDTO> getAllCommentsForPost(UUID postId) {
         return commentRepository.findCommentsByPostId(postId);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class FollowersController {
@@ -25,11 +26,11 @@ public class FollowersController {
 //    return followersService.getFollowersByFollowerStudentId(studentId);
 //}
 @GetMapping("/getFollowers/{studentId}")
-public Optional<Object[]> getFollowersByStudentId(@PathVariable Long studentId) {
+public Optional<Object[]> getFollowersByStudentId(@PathVariable UUID studentId) {
     return followersService.getFollowersByStudentId(studentId);
 }
     @GetMapping("/getFollowingg/{followerStudentId}")
-    public Optional<Object[]> getFollowersByFollowerStudentId(@PathVariable Long followerStudentId) {
+    public Optional<Object[]> getFollowersByFollowerStudentId(@PathVariable UUID followerStudentId) {
         return followersService.getFollowersByFollowerStudentId(followerStudentId);
     }
 

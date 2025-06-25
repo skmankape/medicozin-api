@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -19,7 +20,7 @@ public class CompanyEntity implements UserDetails {
     @Id
     @GeneratedValue
     @Column(name = "companyid")
-    private Long companyid;
+    private UUID companyid;
 
     @Column(name = "cname")
     private String cname;
@@ -65,7 +66,7 @@ public class CompanyEntity implements UserDetails {
         return true;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return companyid;
     }
 

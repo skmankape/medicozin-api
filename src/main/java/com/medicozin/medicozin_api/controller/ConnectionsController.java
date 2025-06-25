@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class ConnectionsController {
@@ -19,7 +20,7 @@ public class ConnectionsController {
     }
 
     @GetMapping("/getConnections/{studentId}")
-    public Optional<Object[]> getConnectionsByStudentId(@PathVariable Long studentId) {
+    public Optional<Object[]> getConnectionsByStudentId(@PathVariable UUID studentId) {
         return connectionsService.getConnectionsByStudentId(studentId);
     }
 }

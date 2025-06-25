@@ -5,15 +5,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class MyUserDetails implements UserDetails {
 
-    private Long userId;
+    private UUID userId;
     private String email;
     private String password;
     private boolean active;
 
-    public MyUserDetails(UserDetails userDetails, Long userId) {
+    public MyUserDetails(UserDetails userDetails, UUID userId) {
         this.email = userDetails.getUsername();
         this.password = userDetails.getPassword();
         this.active = userDetails.isEnabled();
@@ -41,7 +42,7 @@ public class MyUserDetails implements UserDetails {
         this.userId = company.getId();
     }
 
-    public Long getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 

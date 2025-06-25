@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -19,7 +20,7 @@ public class DoctorEntity implements UserDetails {
     @Id
     @GeneratedValue
     @Column(name="doctorid")
-    private Long doctorid;
+    private UUID doctorid;
     @Column(name="firstname")
     private String firstname;
     @Column(name="lastname")
@@ -32,6 +33,20 @@ public class DoctorEntity implements UserDetails {
     private String designation;
     @Column(name="specialization")
     private String specialization;
+    //SHREE//
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "year")
+    private String year;
+
+    @Column(name = "dob")
+    private String dob;
+    //SHREE//
+
     @Column(name="mobileno")
     private String mobileno;
     @Column(name="password")
@@ -75,17 +90,17 @@ public class DoctorEntity implements UserDetails {
         return true;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return doctorid;
     }
 
-    public Long getDoctorId() {
+    public UUID getDoctorId() {
         return doctorid;
     }
     public boolean isActive() {
         return true;
     }
-    public void setDoctorId(Long doctorId) {
+    public void setDoctorId(UUID doctorId) {
         this.doctorid = doctorId;
     }
 

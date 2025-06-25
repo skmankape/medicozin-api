@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 // Base URL for your API
@@ -22,13 +23,19 @@ public class LikesController {
     }
 
     @GetMapping("/getLikes/{postId}")
-    public List<Likes> getLikes(@PathVariable Long postId) {
+    public List<Likes> getLikes(@PathVariable UUID postId) {
         return likeService.getAllLikesByPost(postId);
     }
+
+    @GetMapping("/getTotalLikes/{postId}")
+    public Long getTotalLikes(@PathVariable UUID postId) {
+        return likeService.countByPostsPostId(postId);
+    }
+
     @PostMapping("/Likestatus")
     public boolean getLikeStatus(@RequestBody LikeStatusRequest request) {
-        Long postId = request.getPostId();
-        Long studentId = request.getStudentId();
+        UUID postId = request.getPostId();
+        UUID studentId = request.getStudentId();
         return likeService.hasLikedPost(postId, studentId);
     }
     @DeleteMapping("/deleteLike")
@@ -44,33 +51,33 @@ public class LikesController {
 
 // Helper class for the request body
 class LikeRequest {
-    private Long postId;
-    private Long studentId;
+    private UUID postId;
+    private UUID studentId;
 
     // Getters and Setters
-    public Long getPostId() { return postId; }
-    public void setPostId(Long postId) { this.postId = postId; }
-    public Long getStudentId() { return studentId; }
-    public void setStudentId(Long studentId) { this.studentId = studentId; }
+    public UUID getPostId() { return postId; }
+    public void setPostId(UUID postId) { this.postId = postId; }
+    public UUID getStudentId() { return studentId; }
+    public void setStudentId(UUID studentId) { this.studentId = studentId; }
 }
 class LikeStatusRequest {
-    private Long postId;
-    private Long studentId;
+    private UUID postId;
+    private UUID studentId;
 
     // Getters and setters
-    public Long getPostId() {
+    public UUID getPostId() {
         return postId;
     }
 
-    public void setPostId(Long postId) {
+    public void setPostId(UUID postId) {
         this.postId = postId;
     }
 
-    public Long getStudentId() {
+    public UUID getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(UUID studentId) {
         this.studentId = studentId;
     }
 }

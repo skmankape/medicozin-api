@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class LikeService {
@@ -23,7 +24,7 @@ public class LikeService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public Likes createLike(Long postId, Long studentId) {
+    public Likes createLike(UUID postId, UUID studentId) {
         // Retrieve the post and student entities from the database
         Posts post = postRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found"));
@@ -39,13 +40,18 @@ public class LikeService {
         return likeRepository.save(like);
     }
 
-    public List<Likes> getAllLikesByPost(Long postId) {
+    public List<Likes> getAllLikesByPost(UUID postId) {
         return likeRepository.findByPostsPostId(postId);
     }
-    public boolean hasLikedPost(Long postId, Long studentId) {
+
+    public Long countByPostsPostId(UUID postId) {
+        return likeRepository.countByPostsPostId(postId);
+    }
+
+    public boolean hasLikedPost(UUID postId, UUID studentId) {
         return likeRepository.existsByPostIdAndStudentId(postId, studentId);
     }
-    public void deleteLike(Long postId, Long studentId) {
+    public void deleteLike(UUID postId, UUID studentId) {
         Posts post = postRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found"));
         StudentEntity student = studentRepository.findById(studentId)

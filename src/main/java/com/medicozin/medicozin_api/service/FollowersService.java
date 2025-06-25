@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class FollowersService {
@@ -20,11 +21,11 @@ public class FollowersService {
         return followersRepository.save(follower);
     }
 
-    public Optional<Object[]> getFollowersByStudentId(Long followerStudentId) {
+    public Optional<Object[]> getFollowersByStudentId(UUID followerStudentId) {
         return studentRepository.findByFollowerStudentId2(followerStudentId);
     }
 
-    public Optional<Object[]> getFollowersByFollowerStudentId(Long followerStudentId) {
+    public Optional<Object[]> getFollowersByFollowerStudentId(UUID followerStudentId) {
         return studentRepository.findByFollowerStudentId(followerStudentId); // Implement this in the repository
     }
 
